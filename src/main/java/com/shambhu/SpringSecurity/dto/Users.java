@@ -1,8 +1,8 @@
 package com.shambhu.SpringSecurity.dto;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.annotation.Id;
+
 
 @Getter
 @Setter
@@ -10,9 +10,11 @@ import org.springframework.data.annotation.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "user")
 public class Users {
+
     @Id
     private int id;
     private String username;
-    private String password;
+    private String pasword;
 }
