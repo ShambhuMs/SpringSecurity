@@ -2,6 +2,7 @@ package com.shambhu.SpringSecurity.controller;
 
 import com.shambhu.SpringSecurity.dto.Users;
 import com.shambhu.SpringSecurity.service.MyUserDetailsService;
+import com.shambhu.SpringSecurity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,10 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
     @Autowired
-    private MyUserDetailsService myUserDetailsService;
+    private UserService userService;
 
     @PostMapping("/register")
     public Users register(@RequestBody Users user){
-        return myUserDetailsService.register(user);
+        return userService.register(user);
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody Users user){
+        return userService.verify(user);
     }
 }
